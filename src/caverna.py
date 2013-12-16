@@ -85,10 +85,10 @@ class Camara:
 class Tunel:
     """Um tunel da caverna que liga camaras. :ref:'tunel'
 """
-    def __init__(self, html, nome, lugar, saida, caverna):
+    def __init__(self, html, nome, lugar, par_ordenado, caverna):
         """Inicia o tunel. """
         self.html, self.nome, self.caverna = html, nome, caverna
-        self.lugar, self.saida = lugar, saida
+        self.lugar, self.par_ord = lugar, par_ordenado
         self.entrada_camara = self.entrada = self.passagem = self.div = None
         self.camara = ()
 
@@ -123,7 +123,8 @@ class Tunel:
         """Cria o tunel e suas partes."""
         self.div = self.html. DIV(Id=self.nome)
         self.passagem = self.html.DIV(Id='passa_'+self.nome)
-        self.cria_entrada(self.saida)
+        #camaras = [camara for camara in self.par_ord]
+        [self.cria_entrada(self.caverna.camara["camara_%d" % saida]) for saida in self.par_ord]
         self.div.style.backgroundSize = 'cover'
         self.div.style.backgroundImage = 'url(%s)' % CAVEZ
         self.div.style.width = 1000
