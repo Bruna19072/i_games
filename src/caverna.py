@@ -37,18 +37,23 @@ class Caverna:
 
     def movimenta(self, sala):
         self.esconde <= self.sala.div
-        self.main <= sala.div
+        self.main <= self.sala.div
         self.sala = sala
 
     def cria_caverna(self):
         """Cria a caverna e suas partes."""
-        self.camara = Camara(self.html, "Camara0", self).cria_camara()
-        self.sala = self.camara
+        self.camara = {
+            'camara_%d' % a:
+        Camara(self.html, 'camara_%d' % a, self).cria_camara()
+            for a in CAMARAS
+        }
         # criando uma colecao de tuneis
+        self.sala = self.camara['camara_0']
+        self.main <= self.sala. div
 
         self.tunel = {
-            'tunel_%d' % a:
-            Tunel(self.html, "tunel_%d" % a, self.camara, self.camara.passagem, self).cria_tunel()
+            'tunel_%d_%d' % a:
+            Tunel(self.html, "tunel_%d" % a, self.sala, self.sala.passagem, self).cria_tunel()
             for a in TUNEIS
         }
         return self
@@ -68,12 +73,12 @@ class Camara:
         self.div = self.html. DIV(Id=self.nome)
         self.passagem = self.html.DIV(Id='passa_'+self.nome)
         self.div.style.backgroundSize = 'cover'
-        7self.div.style.backgroundImage = 'url(%s)' % CAVEX
+        self.div.style.backgroundImage = 'url(%s)' % CAVEX
         self.div.style.width = 1000
         self.div.style.height = 800
         self.div.text = "Caverna do Billie Joe Armstrong"
         self.div <= self.passagem
-        self.lugar.main <= self.div
+        self.lugar.esconde <= self.div
         return self
 
 
