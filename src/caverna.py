@@ -49,7 +49,7 @@ class Caverna:
         self.tunel = {
             'tunel_%d' % a:
             Tunel(self.html, "tunel_%d" % a, self.camara, self.camara.passagem, self).cria_tunel()
-            for a in range(0, 3)
+            for a in TUNEIS
         }
         return self
 
