@@ -15,6 +15,9 @@ Caverna é um jogo de aventuras em uma caverna.
 """
 CAVEX = "https://dl.dropboxusercontent.com/u/1751704/labase/caverna/img/cavernax.jpg"
 CAVEZ = "https://dl.dropboxusercontent.com/u/1751704/labase/caverna/img/cavernaz.jpg"
+CAMARAS = [0, 1, 2,3]
+TUNEIS = [(0,1), (0,2), (0,3), (1,2), (2,3), (1,3)]
+#[par for par in TUNEIS if 0 in par]
 
 
 class Caverna:
@@ -65,10 +68,10 @@ class Camara:
         self.div = self.html. DIV(Id=self.nome)
         self.passagem = self.html.DIV(Id='passa_'+self.nome)
         self.div.style.backgroundSize = 'cover'
-        self.div.style.backgroundImage = 'url(%s)' % CAVEX
+        7self.div.style.backgroundImage = 'url(%s)' % CAVEX
         self.div.style.width = 1000
         self.div.style.height = 800
-        self.div.text = "Caverna da Claudia"
+        self.div.text = "Caverna do Billie Joe Armstrong"
         self.div <= self.passagem
         self.lugar.main <= self.div
         return self
