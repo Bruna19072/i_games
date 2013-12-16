@@ -15,7 +15,7 @@ Caverna é um jogo de aventuras em uma caverna.
 """
 CAVEX = "https://dl.dropboxusercontent.com/u/1751704/labase/caverna/img/cavernax.jpg"
 CAVEZ = "https://dl.dropboxusercontent.com/u/1751704/labase/caverna/img/cavernaz.jpg"
-CAMARAS = [0, 1, 2,3]
+CAMARAS = [0, 1, 2, 3]
 TUNEIS = [(0,1), (0,2), (0,3), (1,2), (2,3), (1,3)]
 #[par for par in TUNEIS if 0 in par]
 
@@ -110,17 +110,20 @@ class Tunel:
         self.entrada_camara.onclick = self.sai_tunel
         self.passagem <= self.entrada_camara
 
+    def cria_entrada(self, saida1):
+        estilo = dict(
+            width="33.33%", height=300, Float='left')
+        entrada = self.html.DIV(
+            Id='entra_' + self.nome, style=estilo
+        )
+        entrada.onclick = self.movimenta
+        saida1 <= entrada
+
     def cria_tunel(self):
         """Cria o tunel e suas partes."""
         self.div = self.html. DIV(Id=self.nome)
         self.passagem = self.html.DIV(Id='passa_'+self.nome)
-        estilo = dict(
-            width="33.33%", height=300, Float='left')
-        self.entrada = self.html.DIV(
-            Id='entra_'+self.nome, style=estilo
-        )
-        self.entrada.onclick = self.movimenta
-        self.saida <= self.entrada
+        self.cria_entrada(self.saida)
         self.div.style.backgroundSize = 'cover'
         self.div.style.backgroundImage = 'url(%s)' % CAVEZ
         self.div.style.width = 1000
